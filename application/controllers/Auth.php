@@ -12,6 +12,10 @@ class Auth extends CI_Controller {
         $this->load->view('login');
     }
 
+    public function register(){
+        $this->load->view('register');
+    }
+
     public function login(){
         
         $dataInput = array(
@@ -25,7 +29,7 @@ class Auth extends CI_Controller {
             $this->session->sess_expiration = 7200;
             $this->session->set_userdata('logged_in', $data);
             
-            header("location:" . base_url() . "mainpage");
+            header("location:" . base_url() . "home");
 
         } else {
             $data['message'] = "<code>Invalid Username or Password, try again</code>";
@@ -33,7 +37,7 @@ class Auth extends CI_Controller {
         }
     }
 
-    public function register(){
+    public function registerUser(){
         $dataInput = array(
             'nama' => $this->input->post('nama'),
             'username' => $this->input->post('username'),
