@@ -67,7 +67,7 @@
             </form>
 
             <br>
-            <p>Tidak punya akun, <a href="<?php echo base_url(); ?>index.php/auth/register"> Register di sini</a></p>
+            <p>Tidak punya akun, <a href="<?php echo base_url(); ?>auth/register"> Register di sini</a></p>
 
         </div>
         <!-- /.login-box-body -->
@@ -81,19 +81,17 @@
 
     <script>
         function loginhandle() {
-            if (document.getElementById("username").value !== "") {
-                if (document.getElementById("password").value !== "") {
-
-                    document.getElementById("loginform").submit();
-
-                } else {
-                    document.getElementById("message").innerHTML = "<code>Please, fill the Password</code>";
-                }
-            } else {
+            if (document.getElementById("username").value == "") {
                 document.getElementById("message").innerHTML = "<code>Please, fill the Username</code>";
+                return
             }
 
-            //document.getElementById("message").innerHTML = "button push";
+            if (document.getElementById("password").value == "") {
+                document.getElementById("message").innerHTML = "<code>Please, fill the Password</code>";
+                return
+            }
+
+            document.getElementById("loginform").submit();
         }
 
         function showPass() {

@@ -44,8 +44,14 @@ class Auth extends CI_Controller {
             'password' => hash("sha256",$this->input->post('password'))
         );
 
-        $this->ModelAuth->insertAds($data);
-        header("location:". base_url() . "login");
+        if($this->ModelAuth->insert($dataInput)){
+            $data['message'] = "<code>Register berhasil, silahkan Login</code>";
+            $this->load->view('login', $data);
+        } else {
+            $data['message'] = "<code>Register gagal, coba lagi ya</code>";
+            $this->load->view('register', $data);
+        }
+
     }
             
     public function logout() {

@@ -14,9 +14,11 @@ class ModelAuth extends CI_Model{
         return $this -> db -> get();
     }
 
-    public function insert($table, $data){
-        $this->db->insert($table, $data);
+    public function insert($data){
+        if ($this->db->insert("user", $data)){
+            return true;
+        } else {
+            return false;
+        };
     }
-
-
 }

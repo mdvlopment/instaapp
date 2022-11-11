@@ -41,7 +41,7 @@
                 <!-- The user image in the navbar-->
                 <img src="<?php echo base_url(); ?>/assets/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
                 <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                <span class="hidden-xs">Alexander Pierce</span>
+                <span class="hidden-xs"><?php echo $user[0]->NAMA;?></span>
               </a>
               <ul class="dropdown-menu">
                 <!-- The user image in the menu -->
@@ -49,13 +49,13 @@
                   <img src="<?php echo base_url(); ?>/assets/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                   <p>
-                    Alexander Pierce
+                  <?php echo $user[0]->NAMA;?>
                   </p>
                 </li>
                 <!-- Menu Footer-->
                 <li class="user-footer">
                   <div class="pull-right">
-                    <a href="#" class="btn btn-default btn-flat">Log out</a>
+                    <a href="<?php echo base_url();?>auth/logout" class="btn btn-default btn-flat">Log out</a>
                   </div>
                 </li>
               </ul>

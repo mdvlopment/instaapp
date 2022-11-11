@@ -34,7 +34,7 @@
         <div class="login-box-body">
             <p class="login-box-msg"> </p>
 
-            <form id="loginform" action="<?php echo base_url(); ?>auth/login" method="post">
+            <form id="registerform" action="<?php echo base_url(); ?>auth/registerUser" method="post">
                 <div class="form-group has-feedback">
                     <input id="nama" type="text" name="nama" class="form-control" placeholder="Nama">
                 </div>
@@ -63,7 +63,7 @@
                 <div class="row">
                     <!-- /.col -->
                     <div class="col-xs-offset-8 col-xs-4">
-                        <button id="buttonsubmit" type="button" class="btn bg-black btn-block btn-flat" onclick="loginhandle()" on>Register</button>
+                        <button id="buttonsubmit" type="button" class="btn bg-black btn-block btn-flat" onclick="registerhandle()" on>Register</button>
                     </div>
                     <!-- /.col -->
                 </div>
@@ -80,20 +80,23 @@
     <script src="<?php echo base_url(); ?>assets/bootstrap/js/bootstrap.min.js"></script>
 
     <script>
-        function loginhandle() {
-            if (document.getElementById("username").value !== "") {
-                if (document.getElementById("password").value !== "") {
-
-                    document.getElementById("loginform").submit();
-
-                } else {
-                    document.getElementById("message").innerHTML = "<code>Please, fill the Password</code>";
-                }
-            } else {
-                document.getElementById("message").innerHTML = "<code>Please, fill the Username</code>";
+        function registerhandle() {
+            if (document.getElementById("nama").value == "") {
+                document.getElementById("message").innerHTML = "<code>Please, fill the Nama</code>";
+                return
             }
 
-            //document.getElementById("message").innerHTML = "button push";
+            if (document.getElementById("username").value == "") {
+                document.getElementById("message").innerHTML = "<code>Please, fill the Username</code>";
+                return
+            }
+
+            if (document.getElementById("password").value == "") {
+                document.getElementById("message").innerHTML = "<code>Please, fill the Password</code>";
+                return
+            }
+
+            document.getElementById("registerform").submit();
         }
 
         function showPass() {
